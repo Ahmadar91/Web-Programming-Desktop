@@ -1,13 +1,12 @@
 import React from 'react'
+import Bar from './bar/bar'
 import './home.css'
 
 export default class Home extends React.Component {
   render () {
     return (
-      <div>
-        <h1>
-                 Hello World!
-        </h1>
+      <div className='home'>
+        <Bar />
       </div>
     )
   }

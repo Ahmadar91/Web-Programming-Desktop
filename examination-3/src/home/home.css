@@ -1,0 +1,9 @@
+.home{
+    min-height: 100vh;
+    min-width: 100 vw;
+    display: block;
+}
+
+.button{
+  width: 10%;
+}
