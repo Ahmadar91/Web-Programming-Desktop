@@ -1,0 +1,19 @@
+.container{
+margin: auto;
+padding: auto;
+background-color: chocolate;;
+width: 100vh;
+height: 100vv;
+}
+.header{
+    background-color: cadetblue;
+}
+.close{
+    float: right;
+}
+.submit{
+    float: right;
+}
+.input{
+width: 80vh;
+}

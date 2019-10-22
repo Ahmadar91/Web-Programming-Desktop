@@ -5,7 +5,7 @@ export default class MemoryGame extends React.Component {
     return (
       <div>
         <h1>
-                     Hello World!
+                     MemoryGame
         </h1>
       </div>
     )
