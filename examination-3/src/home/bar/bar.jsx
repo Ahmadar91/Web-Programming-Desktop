@@ -7,7 +7,7 @@ export default class Bar extends React.Component {
     return (
       <div className='bar'>
         <ul style={{ display: 'inline' }}>
-          <li onClick={this.props.handleClick.bind(this, 'Chat')}>Chat</li>
+          <li className='fas fa-comments' onClick={this.props.handleClick.bind(this, 'Chat')}>Chat</li>
           <li onClick={this.props.handleClick.bind(this, 'MemoryGame')}>MemoryGame</li>
         </ul>
 
