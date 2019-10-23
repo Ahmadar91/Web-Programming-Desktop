@@ -2,7 +2,6 @@ import React from 'react'
 import Bar from './bar/bar'
 import './home.css'
 import Chat from '../chat/chat'
-
 import MemoryGame from '../MemoryGame/MemoryGame'
 
 export default class Home extends React.Component {
@@ -29,10 +28,10 @@ export default class Home extends React.Component {
     return (
       <div className='home'>
 
-        {/* <Bar /> */}
-        {/* <Chat /> */}
+
         <Bar handleClick={this.handleClick} />
         {this._renderSubComp()}
+  
       </div>
     )
   }
