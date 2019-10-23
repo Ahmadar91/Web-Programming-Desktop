@@ -7,31 +7,46 @@ import MemoryGame from '../MemoryGame/MemoryGame'
 export default class Home extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { render: '' }
+    this.state = { 
+      render: '', 
+    arr : [
+    ],
+    key: 1     
   }
+}
 
     handleClick = (compName, e) => {
     console.log(compName)
     this.setState({ render: compName })
+    let clickedIcons = this.state.arr
+    switch (this.state.render) {
+      case 'Chat': clickedIcons.push(<Chat />) 
+      break
+      case 'MemoryGame' : clickedIcons.push(<MemoryGame />) 
+      break
+      
   }
+  this.setState({
+    arr: clickedIcons
+  })
+  console.log(this.state.arr);
+  
+}
 
   _renderSubComp () {
-    switch (this.state.render) {
-
-      // use window and insert chat inside of it
-      case 'Chat': return <Chat />
-      case 'MemoryGame' : return <MemoryGame />
-    }
-  }
-
+    
+  
+     return this.state.arr
+      }
+      
+    
+  
+  
   render () {
     return (
       <div className='home'>
-
-
         <Bar handleClick={this.handleClick} />
         {this._renderSubComp()}
-  
       </div>
     )
   }
