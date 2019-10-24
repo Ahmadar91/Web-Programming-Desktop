@@ -3,6 +3,7 @@ import Bar from './bar/bar'
 import './home.css'
 import Chat from '../chat/chat'
 import MemoryGame from '../MemoryGame/MemoryGame'
+import Desktop from './desktop'
 
 export default class Home extends React.Component {
   constructor (props) {
@@ -43,9 +44,10 @@ export default class Home extends React.Component {
       <div className='home'>
         <Bar handleClick={this.handleClick} />
         {/* {this._renderSubComp()} */}
-       {this.state.arr.map((child, index)=>(
+       {/* {this.state.arr.map((child, index)=>(
           <div key={index}>{child}</div>
-        ))} 
+        ))}  */}
+        <Desktop arr={this.state.arr} />
       </div>
     )
   }

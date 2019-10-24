@@ -1,4 +1,4 @@
-.container{
+/* .container{
 margin: auto;
 padding: auto;
 background-color: chocolate;;
@@ -16,4 +16,16 @@ height: 60vv;
 }
 .input{
 width: 50   vh;
+} */
+
+#window
+{
+	margin: auto;
+padding: auto;; width: 300px; border: solid 1px silver;
 }
+
+#window > .header {
+	overflow: hidden; background: rgb(220,220,220); cursor: move;
+}
+
+#window > .header > .close { float: right; }
