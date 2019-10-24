@@ -5,13 +5,12 @@ import './bar.css'
 export default class Bar extends React.Component {
   render () {
     return (
-      <div className='bar'>
-        <ul style={{ display: 'inline' }}>
-          <li className='fas fa-comments' onClick={this.props.handleClick.bind(this, 'Chat')}>Chat</li>
-          <li onClick={this.props.handleClick.bind(this, 'MemoryGame')}>MemoryGame</li>
+      <nav className='bar'>
+        <ul style={{ display: 'inline' }} onClick={this.props.handleClick}>
+          <li id='c'>Chat</li>
+          <li id='MG'>MemoryGame</li>
         </ul>
-
-      </div>
+      </nav>
     )
   }
 }
