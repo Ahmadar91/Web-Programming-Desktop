@@ -23,15 +23,15 @@ export default class Home extends React.Component {
     }
     this.setState({ render: compName })
     const clickedIcons = this.state.arr
-    // switch (compName.target.id) {
-    //   case 'c': clickedIcons.push(<Chat appID={'c' + this.state.key} />)
-    //     console.log('Chat')
-    //     console.log(<Chat appID={'c' + this.state.key} />)
-    //     break
-    //   case 'MG' : clickedIcons.push(<MemoryGame appID={'MG' + this.state.key} />)
-    //     console.log('MemoryGame')
-    //     console.log(<MemoryGame appID={'MG' + this.state.key} />)
-    //     break
+    switch (compName.target.id) {
+      case 'c': clickedIcons.push(<Chat appID={'c' + this.state.key} />)
+        console.log('Chat')
+        console.log(<Chat appID={'c' + this.state.key} />)
+        break
+      case 'MG' : clickedIcons.push(<MemoryGame appID={'MG' + this.state.key} />)
+        console.log('MemoryGame')
+        console.log(<MemoryGame appID={'MG' + this.state.key} />)
+        break
     }
     this.setState({
       key: this.state.key + 1,
