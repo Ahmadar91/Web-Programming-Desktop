@@ -1,9 +1,9 @@
 .bar{
     background: grey;
-    float: left;
+    float: left;;
    
-        max-height: 5%;
+        /* max-height: 5%;
         max-width: 100%;
-        min-height: 100%;
+        min-height: 100%; */
         
 }

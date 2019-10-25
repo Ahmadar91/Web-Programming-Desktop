@@ -12,6 +12,7 @@ export default class Home extends React.Component {
       render: '',
       arr: [],
       key: 0
+
     }
   }
 
@@ -22,16 +23,15 @@ export default class Home extends React.Component {
     }
     this.setState({ render: compName })
     const clickedIcons = this.state.arr
-    switch (compName.target.id) {
-      case 'c': clickedIcons.push(<Chat key={'c' + this.state.id} />)
-        console.log('Chat')
-        console.log(<Chat key={'c' + this.state.id} />)
-        console.log(<Chat key={'c' + this.state.id} />)
-        break
-      case 'MG' : clickedIcons.push(<MemoryGame key={'MG' + this.state.id} />)
-        console.log('MemoryGame')
-        console.log(<MemoryGame key={'MG' + this.state.id} />)
-        break
+    // switch (compName.target.id) {
+    //   case 'c': clickedIcons.push(<Chat appID={'c' + this.state.key} />)
+    //     console.log('Chat')
+    //     console.log(<Chat appID={'c' + this.state.key} />)
+    //     break
+    //   case 'MG' : clickedIcons.push(<MemoryGame appID={'MG' + this.state.key} />)
+    //     console.log('MemoryGame')
+    //     console.log(<MemoryGame appID={'MG' + this.state.key} />)
+    //     break
     }
     this.setState({
       key: this.state.key + 1,

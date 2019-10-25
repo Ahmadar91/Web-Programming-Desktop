@@ -18,7 +18,7 @@ height: 60vv;
 width: 50   vh;
 } */
 
-#window
+.window
 {
 margin: auto;
 padding: auto;
@@ -26,8 +26,8 @@ padding: auto;
  border: solid 1px silver;
 }
 
-#window > .header {
+.window > .header {
 	overflow: hidden; background: rgb(220,220,220); cursor: move;
 }
 
-#window > .header > .close { float: right; }
+.window > .header > .close { float: right; }
