@@ -1,3 +1,6 @@
-#memoryContainer img{
-    width: 100px;
-    }
+.memory img{
+width: 100px;
+}
+.memory .remove{
+    visibility: hidden;
+}
