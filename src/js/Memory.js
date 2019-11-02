@@ -13,4 +13,3 @@ export function Memory (rows, cols, container) {
     document.appendChild(document.createElement('br'))
   }
 }
-\
