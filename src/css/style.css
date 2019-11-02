@@ -4,3 +4,13 @@ width: 100px;
 .memory .remove{
     visibility: hidden;
 }
+.window
+{
+	position: fixed; width: 300px; border: solid 1px silver;
+}
+
+.window > .header {
+	overflow: hidden; background: rgb(220,220,220); cursor: move;
+}
+
+.window > .header > .close { float: right; }

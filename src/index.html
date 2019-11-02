@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href='css/style.css'>
 </head>
 
 <body>
@@ -21,6 +21,13 @@
             </ul>
         </div>
     </nav>
+<!-- todo template and then insert in side of it the memory game or chat -->
+    <div class="window">
+		<div class="header"> Window Title <button class="close">x</button></div>
+		<div class="body"> Window content <br> Lorem ipsum ...</div>
+	</div>
+
+
     <div id='memoryContainer'>
         <template>
             <div class="memory">
@@ -29,14 +36,15 @@
         </template>
     </div>
     <div id='ChatContainer'>
-            <template>
-                    <div class="chat">
+        <template>
+            <div class="chat">
                 <ul id="messages" class='messages'></ul>
                 <input id='textBox' type="text">
                 <button id='button'>Send</button>
-                    </div>
-            </template>
-        </div>
+            </div>
+        </template>
+    </div>
+
     <script nomodule src="build.js"></script>
 </body>
 

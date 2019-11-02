@@ -23,4 +23,4 @@ export function handleClick () {
   })
 }
 handleClick()
-chat()
+// chat()
