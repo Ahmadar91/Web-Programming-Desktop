@@ -5,6 +5,9 @@ width: 100px;
 .memory .remove{
     visibility: hidden;
 }
+.hide{
+    visibility: hidden;
+}
 .window
 {
 	position: fixed; width: 500px; border: solid 1px silver;
@@ -15,3 +18,52 @@ width: 100px;
 }
 
 .window > .header > .close { float: right; }
+
+
+*{
+	box-sizing: border-box;
+}
+
+  
+.container{
+	width: 400px;
+	margin: 0 auto;
+	border: solid 1px #ccc;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+  
+.chat-container{
+	height: 400px;
+	overflow: auto;
+	transform: rotate(180deg);
+	direction: rtl;
+	
+}
+  
+  .message{
+    border-bottom: solid 1px #ccc;
+    padding: 20px;
+    transform: rotate(180deg);
+    direction: ltr;
+    
+  }
+
+   
+    .datetime{
+		float: right;
+		color: #999;
+	}
+     
+
+.send-message-form
+  input{
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  button{}
+    

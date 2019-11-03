@@ -1,29 +1,42 @@
 
 export function chat (id) {
+  console.log(id)
+
   const Window = document.querySelector('#windowContainer template')
-  console.log(Window)
+
   const windowDiv = document.importNode(Window.content, true)
-  console.log(windowDiv)
-  // const chatContainer = document.querySelector('#ChatContainer')
+  // figure out how to create multiply Windows and send message to each window\
+  // const windowDiv2 = document.importNode(Window.content, true)
+  // const windowDiv3 = document.importNode(Window.content, true)
+
+  const messageTemplate = document.querySelector('#message-container template')
+  console.log(messageTemplate)
+  const messageDiv = document.importNode(messageTemplate.content, true)
+  console.log(messageDiv)
   const templateDiv = document.querySelectorAll('#ChatContainer template')[0].content.firstElementChild
 
   const chatDiv = document.importNode(templateDiv, true)
   console.log(chatDiv)
   const desktop = document.querySelector('body')
   desktop.appendChild(windowDiv)
-
-  const body = document.querySelector('.body')
-  console.log(body)
-  body.appendChild(chatDiv)
-
-  // chatContainer.appendChild(chatDiv)
-  const messages = document.querySelector('#messages')
+  // desktop.appendChild(windowDiv2)
+  // desktop.appendChild(windowDiv3)
+  const windowID = document.querySelector('.window')
+  windowID.setAttribute('id', id)
+  const WindowBody = document.querySelector('.body')
+  console.log(WindowBody)
+  WindowBody.appendChild(chatDiv)
+  const chatContainer = document.querySelector('.chat-container')
   const textBox = document.querySelector('#textBox')
   const button = document.querySelector('#button')
-
+  const closeButton = document.querySelector('.close')
   button.addEventListener('click', () => {
     sendText()
     textBox.value = ''
+  })
+  closeButton.addEventListener('click', e => {
+    socket.close()
+    desktop.removeChild(e.target.parentNode.parentNode)
   })
   const socket = new window.WebSocket('ws://vhost3.lnu.se:20080/socket/')
 
@@ -52,9 +65,12 @@ export function chat (id) {
     }
 
     if (text.length) {
-      const newMsg = document.createElement('li')
-      newMsg.textContent = text
-      messages.appendChild(newMsg)
+      const newMsg = document.createElement('div')
+      newMsg.classList.add('message')
+      const newP = document.createElement('p')
+      newMsg.appendChild(newP)
+      newP.textContent = text
+      chatContainer.appendChild(newMsg)
     }
   }
 }
