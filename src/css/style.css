@@ -37,21 +37,19 @@ width: 100px;
 .chat-container{
 	height: 400px;
 	overflow: auto;
-	transform: rotate(180deg);
-	direction: rtl;
+   direction: ltr;
 	
 }
   
   .message{
     border-bottom: solid 1px #ccc;
     padding: 20px;
-    transform: rotate(180deg);
     direction: ltr;
     
   }
 
    
-    .datetime{
+    .dateTime{
 		float: right;
 		color: #999;
 	}

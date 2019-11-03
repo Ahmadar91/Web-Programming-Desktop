@@ -65,11 +65,17 @@ export function chat (id) {
     }
 
     if (text.length) {
+      const now = new Date()
       const newMsg = document.createElement('div')
       newMsg.classList.add('message')
+      const date = document.createElement('div')
+      date.textContent = now
+      date.classList.add('dateTime')
       const newP = document.createElement('p')
-      newMsg.appendChild(newP)
       newP.textContent = text
+      newMsg.appendChild(date)
+      newMsg.appendChild(newP)
+
       chatContainer.appendChild(newMsg)
     }
   }
