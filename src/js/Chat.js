@@ -1,14 +1,26 @@
 
-export function chat () {
-  const chatContainer = document.querySelector('#ChatContainer')
+export function chat (id) {
+  const Window = document.querySelector('#windowContainer template')
+  console.log(Window)
+  const windowDiv = document.importNode(Window.content, true)
+  console.log(windowDiv)
+  // const chatContainer = document.querySelector('#ChatContainer')
   const templateDiv = document.querySelectorAll('#ChatContainer template')[0].content.firstElementChild
 
   const chatDiv = document.importNode(templateDiv, true)
   console.log(chatDiv)
-  chatContainer.appendChild(chatDiv)
+  const desktop = document.querySelector('body')
+  desktop.appendChild(windowDiv)
+
+  const body = document.querySelector('.body')
+  console.log(body)
+  body.appendChild(chatDiv)
+
+  // chatContainer.appendChild(chatDiv)
   const messages = document.querySelector('#messages')
   const textBox = document.querySelector('#textBox')
   const button = document.querySelector('#button')
+
   button.addEventListener('click', () => {
     sendText()
     textBox.value = ''

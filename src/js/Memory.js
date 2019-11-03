@@ -1,6 +1,6 @@
 export function Memory (rows, cols, container) {
   let a
-  const imgContainer = document.querySelector(`#${container}`)
+  // const imgContainer = document.querySelector(`.${container}`)
   let tiles = []
   let turn1
   let turn2
@@ -10,7 +10,10 @@ export function Memory (rows, cols, container) {
   tiles = getPictureArray(rows, cols)
   const templateDiv = document.querySelectorAll('#memoryContainer template')[0].content.firstElementChild
   const div = document.importNode(templateDiv, false)
-
+  const Window = document.querySelector('#windowContainer template')
+  console.log(Window)
+  const windowDiv = document.importNode(Window.content, true)
+  console.log(windowDiv)
   tiles.forEach(function (element, index) {
     a = document.importNode(templateDiv.firstElementChild, true)
     a.firstElementChild.setAttribute('data-brickNumber', index)
@@ -27,7 +30,15 @@ export function Memory (rows, cols, container) {
     turnBrick(tiles[index], index, img)
   })
 
-  imgContainer.appendChild(div)
+  // imgContainer.appendChild(windowDiv)
+  // windowDiv.appendChild(div)
+
+  const desktop = document.querySelector('body')
+  desktop.appendChild(windowDiv)
+
+  const body = document.querySelector('.body')
+  console.log(body)
+  body.appendChild(div)
   function turnBrick (tile, index, img) {
     if (turn2) {
       return
