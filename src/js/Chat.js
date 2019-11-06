@@ -1,4 +1,8 @@
 
+export default class Chat {
+
+}
+
 export function chat (id) {
   console.log(id)
 
