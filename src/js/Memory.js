@@ -1,6 +1,6 @@
-export default class Memory {
+// export default class Memory {
 
-}
+// }
 export function Memory (rows, cols, container) {
   let a
   // const imgContainer = document.querySelector(`.${container}`)
