@@ -4,41 +4,43 @@ export default class DesktopWindow {
     this.windowDiv = document.querySelectorAll('.windowContainer template')[0].content.firstElementChild
     this.window = document.importNode(this.windowDiv, true)
     console.log(this.window)
-    this.container.appendChild(this.window)
+    this.windowContainer.appendChild(this.window)
+    this.closeWindowButton = this.window.childNodes[1].childNodes[1]
+    console.log(this.closeWindowElement)
+    this.addEvents()
   }
 
-  dragAndDrop () {
-    let myX = ''
-    let myY = ''
-    let selector = ''
+  moveStart (e) {
+    document.querySelectorAll('.window').forEach((window) => {
+      window.style.zIndex = -1
+    })
+    this.style.zIndex = 5
+    this.isClicked = true
+    this.positions = [this.offsetLeft - e.clientX,
+      this.offsetTop - e.clientY]
+  }
 
-    function resetZ () {
-      const elements = document.querySelectorAll('.window')
-      for (let i = elements.length - 1; i >= 0; i--) {
-        elements[i].style.zIndex = 5
+  moveDragOver () {
+    this.isClicked = false
+  }
+
+  moveDrop (e) {
+    if (this.isClicked) {
+      this.position = {
+        x: e.clientX,
+        y: e.clientY
       }
+      this.style.left = (this.position.x + this.positions[0]) + 'px'
+      this.style.top = (this.position.y + this.positions[1]) + 'px'
     }
+  }
 
-    function moveStart (e) {
-      selector = e.target
-      myX = e.offsetX === undefined ? e.layerX : e.offsetX
-      myY = e.offsetY === undefined ? e.layerY : e.offsetY
-      resetZ()
-      selector.style.zIndex = 10
-    }
-
-    function moveDragOver (e) {
-      e.preventDefault()
-    }
-
-    function moveDrop (e) {
-      e.preventDefault()
-      selector.style.left = e.pageX - myX + 'px'
-      selector.style.top = e.pageY - myY + 'px'
-    }
-
-    document.querySelector('body').addEventListener('dragstart', moveStart, false)
-    document.querySelector('body').addEventListener('dragover', moveDragOver, false)
-    document.querySelector('body').addEventListener('drop', moveDrop, false)
+  addEvents () {
+    this.window.addEventListener('mousedown', this.moveStart, true)
+    this.window.addEventListener('mouseup', this.moveDragOver, true)
+    this.window.addEventListener('mousemove', this.moveDrop, true)
+    this.closeWindowButton.addEventListener('click', () => {
+      this.window.remove()
+    })
   }
 }

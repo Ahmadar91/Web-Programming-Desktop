@@ -29,3 +29,5 @@ handleClick()
 // chat()
 
 const window = new DesktopWindow()
+const window2 = new DesktopWindow()
+const window3 = new DesktopWindow()
