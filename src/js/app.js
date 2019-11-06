@@ -1,6 +1,5 @@
 import { Memory } from './Memory.js'
-import { chat } from './Chat.js'
-import DesktopWindow from './desktopWindow.js'
+import Chat from './Chat.js'
 
 // Memory(4, 4, 'memoryContainer')
 
@@ -10,13 +9,12 @@ import DesktopWindow from './desktopWindow.js'
 const bar = document.querySelector('#nav-mobile')
 export function handleClick () {
   console.log()
-  let cId = 0
+
   bar.addEventListener('click', (event) => {
     switch (event.target.id) {
       case 'chat':
-        chat('c' + cId)
+        openApp(new Chat())
         console.log('Chat')
-        cId++
         break
       case 'MG' :
         Memory(2, 2, 'body')
@@ -27,7 +25,6 @@ export function handleClick () {
 }
 handleClick()
 // chat()
-
-const window = new DesktopWindow()
-const window2 = new DesktopWindow()
-const window3 = new DesktopWindow()
+const openApp = (app) => {
+  app.chat()
+}
