@@ -3,6 +3,10 @@ import DesktopWindow from './desktopWindow.js'
 export default class Chat {
   constructor () {
     const DtWindow = new DesktopWindow()
+    console.log(DtWindow)
+    this.closeWindowButton = DtWindow.window.childNodes[1].childNodes[1]
+    // this.closeWindowButton = DtWindow.getClose()
+    console.log(this.closeWindowButton)
 
     if (this.hasUserName()) {
       this.createChat(DtWindow.window)
@@ -13,6 +17,7 @@ export default class Chat {
   }
 
   createChat (dt) {
+    this.addEvents(dt)
     const messageTemplate = document.querySelector('#message-container template')
     console.log(messageTemplate)
     const messageDiv = document.importNode(messageTemplate.content, true)
@@ -48,6 +53,9 @@ export default class Chat {
       console.log(this.chatContainer)
       var text = ''
       var msg = JSON.parse(event.data)
+      if (msg.type === 'heartbeat') {
+        return
+      }
       if (msg.type === 'notification') {
         text = msg.username + ': ' + msg.data
       }
@@ -138,5 +146,40 @@ export default class Chat {
     }
 
     this.socket.send(JSON.stringify(msg))
+  }
+
+  moveStart (e) {
+    document.querySelectorAll('.window').forEach((window) => {
+      window.style.zIndex = -1
+    })
+    this.style.zIndex = 5
+    this.isClicked = true
+    this.positions = [this.offsetLeft - e.clientX,
+      this.offsetTop - e.clientY]
+  }
+
+  moveDragOver () {
+    this.isClicked = false
+  }
+
+  moveDrop (e) {
+    if (this.isClicked) {
+      this.position = {
+        x: e.clientX,
+        y: e.clientY
+      }
+      this.style.left = (this.position.x + this.positions[0]) + 'px'
+      this.style.top = (this.position.y + this.positions[1]) + 'px'
+    }
+  }
+
+  addEvents (DtWindow) {
+    DtWindow.addEventListener('mousedown', this.moveStart, true)
+    DtWindow.addEventListener('mouseup', this.moveDragOver, true)
+    DtWindow.addEventListener('mousemove', this.moveDrop, true)
+    this.closeWindowButton.addEventListener('click', () => {
+      DtWindow.remove()
+      this.socket.close()
+    })
   }
 }
