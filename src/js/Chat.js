@@ -1,7 +1,18 @@
+
 import DesktopWindow from './desktopWindow.js'
 export default class Chat {
   constructor () {
-    const myWindow = new DesktopWindow()
+    const DtWindow = new DesktopWindow()
+
+    if (this.hasUserName()) {
+      this.createChat(DtWindow.window)
+      this.changeUserName(DtWindow.window)
+    } else {
+      this.addUserName(DtWindow.window)
+    }
+  }
+
+  createChat (dt) {
     const messageTemplate = document.querySelector('#message-container template')
     console.log(messageTemplate)
     const messageDiv = document.importNode(messageTemplate.content, true)
@@ -11,7 +22,8 @@ export default class Chat {
     const chatDiv = document.importNode(templateDiv, true)
     console.log(chatDiv.childNodes[3].firstElementChild)
     this.textBox = chatDiv.childNodes[3].firstElementChild
-    myWindow.window.appendChild(chatDiv)
+    dt.appendChild(chatDiv)
+    // this.displayName = chatDiv.childNodes[3].lastElementChild
 
     this.chatContainer = chatDiv.childNodes[1]
     console.log(this.chatContainer)
@@ -19,12 +31,26 @@ export default class Chat {
     this.button = chatDiv.querySelector('#button')
     this.socket = new WebSocket('ws://vhost3.lnu.se:20080/socket/')
     console.log(this.chatContainer)
-
+    this.displayUserName = chatDiv.querySelector('#displayName')
+    console.log('span', this.displayUserName)
+    this.userName = localStorage.getItem('username')
+    if (this.hasUserName()) {
+      this.displayUserName.textContent = ' ' + this.userName
+    } else {
+      this.displayUserName.style.display = 'none'
+    }
+    this.button.addEventListener('click', () => {
+      this.sendText()
+      this.textBox.value = ''
+    })
     this.socket.onmessage = (event) => {
       console.log(event.data)
       console.log(this.chatContainer)
       var text = ''
       var msg = JSON.parse(event.data)
+      if (msg.type === 'notification') {
+        text = msg.username + ': ' + msg.data
+      }
 
       if (msg.type === 'message') {
         text = msg.username + ': ' + msg.data
@@ -46,10 +72,54 @@ export default class Chat {
     }
   }
 
-  chat (id) {
-    this.button.addEventListener('click', () => {
-      this.sendText()
-      this.textBox.value = ''
+  hasUserName () {
+    this.userName = localStorage.getItem('username')
+    return !(this.userName === null || this.userName === '')
+  }
+
+  changeUserName (dt) {
+    console.log('dffffff')
+    const changeUserNameButton = document.createElement('button')
+    changeUserNameButton.textContent = 'Change Username'
+    changeUserNameButton.className = 'UserNameButton'
+    dt.firstElementChild.appendChild(changeUserNameButton)
+    changeUserNameButton.addEventListener('click', () => {
+      changeUserNameButton.remove()
+      const textBox = document.createElement('input')
+      textBox.placeholder = 'Enter UserName'
+      dt.appendChild(textBox)
+      const userNameSubmit = document.createElement('button')
+      userNameSubmit.textContent = 'Submit'
+      dt.appendChild(userNameSubmit)
+      userNameSubmit.addEventListener('click', () => {
+        this.userNameValue = textBox.value
+        localStorage.setItem('username', this.userNameValue)
+        this.displayUserName.textContent = ' ' + this.userNameValue
+        textBox.remove()
+        userNameSubmit.remove()
+        this.changeUserName(dt)
+      })
+    })
+  }
+
+  addUserName (dt) {
+    const textBox = document.createElement('input')
+    textBox.placeholder = 'Enter UserName'
+    dt.appendChild(textBox)
+    const submit = document.createElement('button')
+    submit.textContent = 'submit'
+    dt.appendChild(submit)
+    submit.addEventListener('click', () => {
+      this.createChat(dt)
+      this.userNameValue = textBox.value
+      console.log(this.userNameValue)
+
+      localStorage.setItem('username', this.userNameValue)
+      this.displayUserName.style.display = 'block'
+      this.displayUserName.textContent = this.userNameValue
+      textBox.remove()
+      submit.remove()
+      this.changeUserName(dt)
     })
   }
 
@@ -57,12 +127,13 @@ export default class Chat {
     if (this.textBox.value === '') {
       return
     }
+    this.userName = localStorage.getItem('username')
     console.log(this.textBox.value)
     const msg = {
       type: 'message',
       data: this.textBox.value,
-      username: 'test222',
-      channel: 'iiiii',
+      username: this.userName,
+      channel: '',
       key: 'eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd'
     }
 

@@ -5,7 +5,6 @@ import Chat from './Chat.js'
 
 // Memory(2, 2, 'memoryContainer')
 
-// Memory(2, 4, 'memoryContainer')
 const bar = document.querySelector('#nav-mobile')
 export function handleClick () {
   console.log()
@@ -13,7 +12,7 @@ export function handleClick () {
   bar.addEventListener('click', (event) => {
     switch (event.target.id) {
       case 'chat':
-        openApp(new Chat())
+        new Chat()
         console.log('Chat')
         break
       case 'MG' :
@@ -24,7 +23,3 @@ export function handleClick () {
   })
 }
 handleClick()
-// chat()
-const openApp = (app) => {
-  app.chat()
-}
