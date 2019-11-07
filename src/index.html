@@ -64,12 +64,14 @@
                 <div class="chat-container">
                 </div>
                 <form class="send-message-form">
-                    <input id='textBox' type="text" placeholder="Your message">
+                    <!-- TODO: fix to send using Enter and horizontal scroll for long messages  -->
+                    <textarea id="textarea" rows="4" cols="50" placeholder="Your message"></textarea>
+                    <!-- <input id='textBox' type="text" placeholder="Your message"> -->
                     <button id='button' type="submit">Send</button>
                     <span id='displayName'></span>
                 </form>
             </div>
-        </template>
+        </input>
     </div>
 
     <script nomodule src="build.js"></script>
