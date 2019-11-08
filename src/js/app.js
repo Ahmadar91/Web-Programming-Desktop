@@ -1,4 +1,4 @@
-import { Memory } from './Memory.js'
+import Memory from './Memory.js'
 import Chat from './Chat.js'
 
 // Memory(4, 4, 'memoryContainer')
@@ -16,7 +16,7 @@ export function handleClick () {
         console.log('Chat')
         break
       case 'MG' :
-        Memory(2, 2, 'body')
+        new Memory()
         console.log('MG')
         break
     }

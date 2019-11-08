@@ -14,10 +14,10 @@ export default class Chat {
     } else {
       this.addUserName(DtWindow.window)
     }
+    this.addEvents(DtWindow.window)
   }
 
   createChat (dt) {
-    this.addEvents(dt)
     const messageTemplate = document.querySelector('#message-container template')
     console.log(messageTemplate)
     const messageDiv = document.importNode(messageTemplate.content, true)
@@ -27,6 +27,7 @@ export default class Chat {
     const chatDiv = document.importNode(templateDiv, true)
     console.log(chatDiv.childNodes[3].firstElementChild)
     this.textBox = chatDiv.childNodes[3].firstElementChild
+    chatDiv.classList.add('whiteBackGround')
     dt.appendChild(chatDiv)
     // this.displayName = chatDiv.childNodes[3].lastElementChild
 
@@ -50,7 +51,6 @@ export default class Chat {
     })
     this.socket.onmessage = (event) => {
       console.log(event.data)
-      console.log(this.chatContainer)
       var text = ''
       var msg = JSON.parse(event.data)
       if (msg.type === 'heartbeat') {
@@ -66,6 +66,12 @@ export default class Chat {
       if (text.length) {
         const now = new Date()
         const newMsg = document.createElement('div')
+        const ServerUserName = msg.username
+        if (ServerUserName === this.userName) {
+          newMsg.classList.add('yourMessage')
+        } else {
+          newMsg.classList.remove('yourMessage')
+        }
         newMsg.classList.add('message')
         const date = document.createElement('div')
         date.textContent = now

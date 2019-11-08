@@ -3,10 +3,7 @@ export default class DesktopWindow {
     this.windowContainer = document.querySelector('.windowContainer')
     this.windowDiv = document.querySelectorAll('.windowContainer template')[0].content.firstElementChild
     this.window = document.importNode(this.windowDiv, true)
-    console.log(this.window)
     this.windowContainer.appendChild(this.window)
-    this.closeWindowButton = this.window.childNodes[1].childNodes[1]
-    console.log(this.closeWindowElement)
     // this.addEvents()
   }
 

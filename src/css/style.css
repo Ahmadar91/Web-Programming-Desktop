@@ -10,7 +10,7 @@ width: 100px;
 }
 .window
 {
-	position: fixed; width: 500px; border: solid 1px silver;
+	position: fixed; width: auto; height: auto; border: solid 1px silver;
 }
 
 .window > .header {
@@ -55,7 +55,7 @@ width: 100px;
    
     .dateTime{
 		float: right;
-		color: #999;
+		color: rgb(211, 233, 171);
 	}
      
 
@@ -71,5 +71,12 @@ width: 100px;
     float: right;
   }
     
-
-
+.yourMessage{
+  background: grey;
+}
+.GrayBackGround{
+  background: gray;
+}
+.whiteBackGround{
+  background: white;
+}
