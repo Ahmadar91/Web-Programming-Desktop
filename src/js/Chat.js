@@ -7,7 +7,7 @@ export default class Chat {
     this.closeWindowButton = DtWindow.window.childNodes[1].childNodes[1]
     // this.closeWindowButton = DtWindow.getClose()
     console.log(this.closeWindowButton)
-
+    DtWindow.window.classList.add('whiteBackGround')
     if (this.hasUserName()) {
       this.createChat(DtWindow.window)
       this.changeUserName(DtWindow.window)
@@ -27,7 +27,7 @@ export default class Chat {
     const chatDiv = document.importNode(templateDiv, true)
     console.log(chatDiv.childNodes[3].firstElementChild)
     this.textBox = chatDiv.childNodes[3].firstElementChild
-    chatDiv.classList.add('whiteBackGround')
+    // chatDiv.classList.add('whiteBackGround')
     dt.appendChild(chatDiv)
     // this.displayName = chatDiv.childNodes[3].lastElementChild
 

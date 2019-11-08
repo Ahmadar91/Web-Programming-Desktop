@@ -5,6 +5,7 @@ export default class Memory {
     console.log(DtWindow)
     this.closeWindowButton = DtWindow.window.childNodes[1].childNodes[1]
     // this.closeWindowButton = DtWindow.getClose()
+    DtWindow.window.classList.add('GrayBackGround')
     console.log(this.closeWindowButton)
     this.MemoryGame(4, 4, DtWindow.window)
     this.addEvents(DtWindow.window)
@@ -26,7 +27,6 @@ export default class Memory {
     console.log(div)
     console.log(container)
     container.appendChild(div)
-    div.classList.add('GrayBackGround')
     this.MemoryContainer = div
     console.log(this.MemoryContainer)
 
