@@ -12,14 +12,30 @@ export default class Memory {
     this.addEvents(DtWindow.window)
   }
 
-  changeMemory (dt) {
-    const changeUserNameButton = document.createElement('button')
-    changeUserNameButton.textContent = 'Change Username'
-    changeUserNameButton.className = 'UserNameButton'
-    dt.firstElementChild.appendChild(changeUserNameButton)
+  changeMemory (dt, old) {
+    const changeArrayButton = document.createElement('button')
+    changeArrayButton.textContent = 'Change Size'
+    changeArrayButton.className = 'UserNameButton'
+    dt.firstElementChild.appendChild(changeArrayButton)
+    changeArrayButton.addEventListener('click', () => {
+      changeArrayButton.remove()
+      this.createMemory(dt)
+      old.remove()
+    })
   }
 
-  createMemory (dt) {
+  // win (dt, old, tries) {
+  //   const h1 = document.createElement('H1')
+  //   h1.textContent = 'You Won! number of tries: ' | +tries
+  //   this.DtWindow.window.appendChild('h1')
+  //   old.remove()
+  //   this.createMemory(dt, h1)
+  // }
+
+  createMemory (dt, h1) {
+    if (h1 !== undefined) {
+      h1.remove()
+    }
     const templateDiv = document.querySelectorAll('.OptionContainer template')[0].content.firstElementChild
     // console.log(templateDiv)
 
@@ -69,7 +85,7 @@ export default class Memory {
     container.appendChild(div)
     this.MemoryContainer = div
     console.log(this.MemoryContainer)
-
+    this.changeMemory(container, div)
     tiles.forEach((element, index) => {
       a = document.importNode(templateDiv.firstElementChild, true)
       a.firstElementChild.setAttribute('data-brickNumber', index)
@@ -113,6 +129,7 @@ export default class Memory {
           pairs++
           if (pairs === (rows * cols) / 2) {
             console.log('Won! Number of tries: ' + tries)
+            // this.win(container, div, tries)
           }
           setTimeout(() => {
             turn1.parentElement.classList.add('remove')
