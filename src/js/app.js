@@ -10,6 +10,7 @@ export function handleClick () {
   console.log()
 
   bar.addEventListener('click', (event) => {
+    event.preventDefault()
     switch (event.target.id) {
       case 'chat':
         new Chat()

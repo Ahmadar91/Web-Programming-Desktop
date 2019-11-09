@@ -14,6 +14,7 @@ export default class Chat {
     } else {
       this.addUserName(DtWindow.window)
     }
+    // this.socket = null
     this.addEvents(DtWindow.window)
   }
 
@@ -45,9 +46,17 @@ export default class Chat {
     } else {
       this.displayUserName.style.display = 'none'
     }
-    this.button.addEventListener('click', () => {
+    this.button.addEventListener('click', (e) => {
+      e.preventDefault()
+
       this.sendText()
       this.textBox.value = ''
+    })
+    this.textBox.addEventListener('keypress', (event) => {
+      if (event.keyCode === 13) {
+        this.sendText()
+        this.textBox.value = ''
+      }
     })
     this.socket.onmessage = (event) => {
       console.log(event.data)
@@ -103,6 +112,7 @@ export default class Chat {
       textBox.placeholder = 'Enter UserName'
       dt.appendChild(textBox)
       const userNameSubmit = document.createElement('button')
+      userNameSubmit.classList.add('button')
       userNameSubmit.textContent = 'Submit'
       dt.appendChild(userNameSubmit)
       userNameSubmit.addEventListener('click', () => {
@@ -121,6 +131,7 @@ export default class Chat {
     textBox.placeholder = 'Enter UserName'
     dt.appendChild(textBox)
     const submit = document.createElement('button')
+    submit.classList.add('button')
     submit.textContent = 'submit'
     dt.appendChild(submit)
     submit.addEventListener('click', () => {
@@ -185,7 +196,9 @@ export default class Chat {
     DtWindow.addEventListener('mousemove', this.moveDrop, true)
     this.closeWindowButton.addEventListener('click', () => {
       DtWindow.remove()
-      this.socket.close()
+      if (this.socket !== null) {
+        this.socket.close()
+      }
     })
   }
 }

@@ -7,8 +7,48 @@ export default class Memory {
     // this.closeWindowButton = DtWindow.getClose()
     DtWindow.window.classList.add('GrayBackGround')
     console.log(this.closeWindowButton)
-    this.MemoryGame(4, 4, DtWindow.window)
+    this.createMemory(DtWindow.window)
+    // this.MemoryGame(4, 4, DtWindow.window)
     this.addEvents(DtWindow.window)
+  }
+
+  changeMemory (dt) {
+    const changeUserNameButton = document.createElement('button')
+    changeUserNameButton.textContent = 'Change Username'
+    changeUserNameButton.className = 'UserNameButton'
+    dt.firstElementChild.appendChild(changeUserNameButton)
+  }
+
+  createMemory (dt) {
+    const templateDiv = document.querySelectorAll('.OptionContainer template')[0].content.firstElementChild
+    // console.log(templateDiv)
+
+    const ulDiv = document.importNode(templateDiv, true)
+
+    dt.appendChild(ulDiv)
+    const ul = document.querySelector('.ul')
+    ul.addEventListener('click', (e) => {
+      switch (e.target.id) {
+        case '2X2':
+          ulDiv.remove()
+          this.MemoryGame(2, 2, dt)
+          console.log('2X2')
+
+          break
+        case '2X4' :
+          ulDiv.remove()
+          this.MemoryGame(2, 4, dt)
+          console.log('2x4')
+
+          break
+        case '4X4' :
+          ulDiv.remove()
+          this.MemoryGame(4, 4, dt)
+          console.log('4x4')
+
+          break
+      }
+    })
   }
 
   MemoryGame (rows, cols, container) {
