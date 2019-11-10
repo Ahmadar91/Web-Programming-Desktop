@@ -74,6 +74,7 @@ export default class Chat {
       }
       if (text.length) {
         const now = new Date()
+        const time = ' ' + now.getHours() + ':' + now.getMinutes() + ' on ' + now.getUTCDate() + '.' + now.getMonth() + '.' + now.getFullYear()
         const newMsg = document.createElement('div')
         const ServerUserName = msg.username
         if (ServerUserName === this.userName) {
@@ -83,7 +84,7 @@ export default class Chat {
         }
         newMsg.classList.add('message')
         const date = document.createElement('div')
-        date.textContent = now
+        date.textContent = time
         date.classList.add('dateTime')
         const newP = document.createElement('p')
         newP.textContent = text
