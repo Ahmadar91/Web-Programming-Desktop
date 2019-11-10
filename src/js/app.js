@@ -1,5 +1,6 @@
 import Memory from './Memory.js'
 import Chat from './Chat.js'
+import player from './player.js'
 
 // Memory(4, 4, 'memoryContainer')
 
@@ -21,7 +22,7 @@ export function handleClick () {
         console.log('MG')
         break
       case 'music' :
-
+        new player()
         console.log('music')
         break
     }
