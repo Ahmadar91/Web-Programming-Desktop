@@ -106,7 +106,7 @@ export default class Chat {
     const a = document.createElement('a')
     a.setAttribute('href', '#')
     const icon = document.createElement('i')
-    icon.setAttribute('class', 'material-icons')
+    icon.setAttribute('class', 'material-icons md-light black')
     icon.textContent = 'settings'
     a.appendChild(icon)
     a.classList.add('UserNameButton')

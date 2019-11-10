@@ -13,12 +13,20 @@ export default class Memory {
   }
 
   changeMemory (dt, old, win) {
-    const changeArrayButton = document.createElement('button')
-    changeArrayButton.textContent = 'Change Size'
-    changeArrayButton.className = 'UserNameButton'
-    dt.firstElementChild.appendChild(changeArrayButton)
-    changeArrayButton.addEventListener('click', () => {
-      changeArrayButton.remove()
+    const a = document.createElement('a')
+    a.setAttribute('href', '#')
+    const icon = document.createElement('i')
+    icon.setAttribute('class', 'material-icons md-light black')
+    icon.textContent = 'settings'
+    a.appendChild(icon)
+    a.classList.add('UserNameButton')
+    // const changeArrayButton = document.createElement('button')
+    // changeArrayButton.textContent = 'Change Size'
+    // changeArrayButton.className = 'UserNameButton'
+    dt.firstElementChild.appendChild(a)
+    icon.addEventListener('click', () => {
+      icon.remove()
+      a.remove()
       this.createMemory(dt)
       old.remove()
       win.remove()

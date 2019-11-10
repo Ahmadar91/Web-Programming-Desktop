@@ -229,3 +229,6 @@ body{
   margin-left: -5px;
   transform: scale(2);
 }
+.material-icons.red { color: rgb(241, 60, 60); }
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.black { color: rgb(230, 220, 220); }
