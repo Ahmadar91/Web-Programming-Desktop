@@ -49,6 +49,9 @@ width: 100px;
     border-bottom: solid 1px #ccc;
     padding: 20px;
     direction: ltr;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    hyphens: auto;
     
   }
 
