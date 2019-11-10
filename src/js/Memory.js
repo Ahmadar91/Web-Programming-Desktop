@@ -140,7 +140,7 @@ export default class Memory {
           pairs++
           if (pairs === (rows * cols) / 2) {
             console.log('Won! Number of tries: ' + tries)
-            win.textContent = 'Won! Number of tries: ' + tries
+            win.textContent = 'You Win! Number of tries: ' + tries
             container.appendChild(win)
             div.remove()
             // this.win(container, div, tries)
