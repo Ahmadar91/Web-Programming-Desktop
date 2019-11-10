@@ -5,14 +5,14 @@ export default class Memory {
     console.log(DtWindow)
     this.closeWindowButton = DtWindow.window.childNodes[1].childNodes[1]
     // this.closeWindowButton = DtWindow.getClose()
-    DtWindow.window.classList.add('GrayBackGround')
+    DtWindow.window.classList.add('whiteBackGround')
     console.log(this.closeWindowButton)
     this.createMemory(DtWindow.window)
     // this.MemoryGame(4, 4, DtWindow.window)
     this.addEvents(DtWindow.window)
   }
 
-  changeMemory (dt, old) {
+  changeMemory (dt, old, win) {
     const changeArrayButton = document.createElement('button')
     changeArrayButton.textContent = 'Change Size'
     changeArrayButton.className = 'UserNameButton'
@@ -21,6 +21,7 @@ export default class Memory {
       changeArrayButton.remove()
       this.createMemory(dt)
       old.remove()
+      win.remove()
     })
   }
 
@@ -80,12 +81,14 @@ export default class Memory {
     const templateDiv = document.querySelectorAll('#memoryContainer template')[0].content.firstElementChild
     const div = document.importNode(templateDiv, false)
     // const windowDiv = document.importNode(div.content, true)
+    const win = document.createElement('H3')
+    win.classList.add('win')
     console.log(div)
     console.log(container)
     container.appendChild(div)
     this.MemoryContainer = div
     console.log(this.MemoryContainer)
-    this.changeMemory(container, div)
+    this.changeMemory(container, div, win)
     tiles.forEach((element, index) => {
       a = document.importNode(templateDiv.firstElementChild, true)
       a.firstElementChild.setAttribute('data-brickNumber', index)
@@ -99,13 +102,13 @@ export default class Memory {
       event.preventDefault()
       const img = event.target.nodeName === 'IMG' ? event.target : event.target.firstElementChild
       const index = parseInt(img.getAttribute('data-brickNumber'))
-      turnBrick(tiles[index], img)
+      turnBrick(tiles[index], img, container, win, div)
     })
 
     // imgContainer.appendChild(windowDiv)
     // windowDiv.appendChild(div)
 
-    function turnBrick (tile, img) {
+    function turnBrick (tile, img, container, win, div) {
       if (turn2) {
         return
       }
@@ -129,6 +132,9 @@ export default class Memory {
           pairs++
           if (pairs === (rows * cols) / 2) {
             console.log('Won! Number of tries: ' + tries)
+            win.textContent = 'Won! Number of tries: ' + tries
+            container.appendChild(win)
+            div.remove()
             // this.win(container, div, tries)
           }
           setTimeout(() => {
