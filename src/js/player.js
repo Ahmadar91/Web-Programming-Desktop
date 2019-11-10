@@ -74,8 +74,9 @@ export default class player {
     }
 
     song.addEventListener('timeupdate', function () {
-      timeBar.textContent = 'song Duration: ' + TimeFormat(song.duration) + ' minutes' + ' currentTime: ' + TimeFormat(song.currentTime)
-      console.log(song.currentTime)
+      // timeBar.textContent = 'song Duration: ' + TimeFormat(song.duration) + ' minutes' + ' currentTime: ' + TimeFormat(song.currentTime)
+      timeBar.textContent = ' ' + TimeFormat(song.currentTime) + '/' + TimeFormat(song.duration)
+      // console.log(song.currentTime)
 
       const position = song.currentTime / song.duration
       fillBar.style.width = position * 100 + '%'
@@ -83,10 +84,10 @@ export default class player {
 
     volumeBar.addEventListener('change', function (e) {
       const volume = e.target.value / 100
-      console.log(volume)
+      // console.log(volume)
 
       song.volume = parseFloat(volume)
-      console.log(parseFloat(volume))
+      // console.log(parseFloat(volume))
     })
     muteButton.addEventListener('click', function () {
       if (song.muted) {
@@ -97,6 +98,16 @@ export default class player {
         muteButton.textContent = 'volume_off'
       }
     })
+    const seekBar = PlayerDiv.querySelector('#seek-bar')
+
+    seekBar.addEventListener('mousedown', function (e) {
+      const clickPosition = e.clientX - e.target.offsetParent.offsetLeft - seekBar.offsetLeft
+      console.log(clickPosition)
+      console.log((e.target.offsetWidth))
+      song.currentTime = (clickPosition / seekBar.offsetWidth) * song.duration
+
+      console.log(song.currentTime)
+    }, false)
 
     function next () {
       currentSong++
