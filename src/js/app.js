@@ -20,6 +20,10 @@ export function handleClick () {
         new Memory()
         console.log('MG')
         break
+      case 'music' :
+
+        console.log('music')
+        break
     }
   })
 }
