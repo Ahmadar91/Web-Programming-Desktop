@@ -102,12 +102,22 @@ export default class Chat {
 
   changeUserName (dt) {
     console.log('dffffff')
-    const changeUserNameButton = document.createElement('button')
-    changeUserNameButton.textContent = 'Change Username'
-    changeUserNameButton.className = 'UserNameButton'
-    dt.firstElementChild.appendChild(changeUserNameButton)
-    changeUserNameButton.addEventListener('click', () => {
-      changeUserNameButton.remove()
+    // const changeUserNameButton = document.createElement('button')
+    const a = document.createElement('a')
+    a.setAttribute('href', '#')
+    const icon = document.createElement('i')
+    icon.setAttribute('class', 'material-icons')
+    icon.textContent = 'settings'
+    a.appendChild(icon)
+    a.classList.add('UserNameButton')
+    // changeUserNameButton.appendChild(icon)
+    // changeUserNameButton.textContent = 'Change Username'
+    // changeUserNameButton.className = 'UserNameButton'
+    dt.firstElementChild.appendChild(a)
+    icon.addEventListener('click', () => {
+      //  icon.preventDefault()
+      icon.remove()
+      a.remove()
       const textBox = document.createElement('input')
       textBox.placeholder = 'Enter UserName'
       dt.appendChild(textBox)
