@@ -46,12 +46,11 @@
                         <p id='time'></p>
                     </div>
                     <div>
-                        <label>Volume:</label>
-                        <input id="volume" type="range">
+                        <label>Volume:   -</label>
+                        <input id="volume" type="range" min="0" max="100" value="50" step="1">
+                        <label>+</label>
+                        <a href="#"><i  id='mute' class="material-icons md-light black">volume_up</i></a>
                     </div>
-                    <div>
-                            <a href="#"><i  id='mute' class="material-icons md-light black">volume_up</i></a>
-                        </div>
                 </div>
             </div>
         </template>
