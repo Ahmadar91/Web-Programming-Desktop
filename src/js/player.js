@@ -21,7 +21,7 @@ export default class player {
 
     dt.appendChild(PlayerDiv)
 
-    const songs = ['Above&Beyond.mp3', 'Time.mp3', 'PinkFloyd.mp3']
+    const songs = ['../audio/Above&Beyond.mp3', '../audio/Time.mp3', '../audio/PinkFloyd.mp3']
     const poster = ['../image/Poster1.jpg', '../image/Poster2.jpg', '../image/Poster3.jpg']
 
     const songTitle = PlayerDiv.querySelector('#songTitle')
@@ -37,7 +37,8 @@ export default class player {
 
     function playSong () {
       song.src = songs[currentSong] // set the source of 0th song
-      songTitle.textContent = songs[currentSong] // set the title of song
+      const text = songs[currentSong]
+      songTitle.textContent = text.slice(9, text.length - 4) // set the title of song
       // song.play() // play the song
       const playPromise = song.play()
       if (playPromise !== null) {

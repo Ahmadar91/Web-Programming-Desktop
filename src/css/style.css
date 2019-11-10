@@ -232,7 +232,7 @@ body{
 .material-icons.red { color: rgb(241, 60, 60); }
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.black { color: rgb(230, 220, 220); }
-
+.material-icons.blue { color:rgba(65, 105, 225, 0.801); }
 #volume{
   width: 50%;
   height: 5px;
