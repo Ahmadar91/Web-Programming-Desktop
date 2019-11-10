@@ -7,7 +7,7 @@ export default class player {
     this.closeWindowButton = DtWindow.window.childNodes[1].childNodes[1]
     // this.closeWindowButton = DtWindow.getClose()
     console.log(this.closeWindowButton)
-    var song = new Audio()
+    const song = new Audio()
     this.createPlayer(DtWindow.window, song)
     this.addEvents(DtWindow.window, song)
   }
@@ -27,6 +27,9 @@ export default class player {
     const songTitle = PlayerDiv.querySelector('#songTitle')
     const fillBar = PlayerDiv.querySelector('#fill')
     const timeBar = PlayerDiv.querySelector('#time')
+    const volumeBar = PlayerDiv.querySelector('#volume')
+    const muteButton = PlayerDiv.querySelector('#mute')
+
     // var song = new Audio()
     let currentSong = 0 // it point to the current song
 
@@ -51,11 +54,47 @@ export default class player {
         PlayerDiv.querySelector('#play img').setAttribute('src', '../image/Play.png')
       }
     }
+    function TimeFormat (time) {
+      // Hours, minutes and seconds
+      const hrs = ~~(time / 3600)
+      const mins = ~~((time % 3600) / 60)
+      const secs = ~~time % 60
+
+      // Output like "1:01" or "4:03:59" or "123:03:59"
+      let ret = ''
+
+      if (hrs > 0) {
+        ret += '' + hrs + ':' + (mins < 10 ? '0' : '')
+      }
+
+      ret += '' + mins + ':' + (secs < 10 ? '0' : '')
+      ret += '' + secs
+      return ret
+    }
 
     song.addEventListener('timeupdate', function () {
-      timeBar.textContent = 'song Duration: ' + Math.round(song.duration / 60) + ' minutes' + ' currentTime: ' + Math.round(song.currentTime)
+      timeBar.textContent = 'song Duration: ' + TimeFormat(song.duration) + ' minutes' + ' currentTime: ' + TimeFormat(song.currentTime)
+      console.log(song.currentTime)
+
       const position = song.currentTime / song.duration
       fillBar.style.width = position * 100 + '%'
+    })
+
+    volumeBar.addEventListener('change', function (e) {
+      const volume = e.target.value / 100
+      console.log(volume)
+
+      song.volume = parseFloat(volume)
+      console.log(parseFloat(volume))
+    })
+    muteButton.addEventListener('click', function () {
+      if (song.muted) {
+        song.muted = false
+        muteButton.textContent = 'volume_up'
+      } else {
+        song.muted = true
+        muteButton.textContent = 'volume_off'
+      }
     })
 
     function next () {

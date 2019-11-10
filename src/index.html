@@ -33,23 +33,32 @@
                 <div id="player">
                     <div id="songTitle"></div>
                     <div id="buttons">
-                        <button id="pre" ><img src="./image/Pre.png" height="90%" width="90%"/></button>
-                        <button id="play" ><img src="./image/Play.png"/></button>
-                        <button id="next" ><img src="./image/Next.png" height="90%" width="90%"/></button>
+                        <button id="pre"><img src="./image/Pre.png" height="90%" width="90%" /></button>
+                        <button id="play"><img src="./image/Play.png" /></button>
+                        <button id="next"><img src="./image/Next.png" height="90%" width="90%" /></button>
                     </div>
-                    
+
                     <div id="seek-bar">
                         <div id="fill"></div>
                         <div id="handle"></div>
                     </div>
-                    <div><span id='time'></span></div>
+                    <div>
+                        <p id='time'></p>
+                    </div>
+                    <div>
+                        <label>Volume:</label>
+                        <input id="volume" type="range">
+                    </div>
+                    <div>
+                            <a href="#"><i  id='mute' class="material-icons md-light black">volume_up</i></a>
+                        </div>
                 </div>
             </div>
         </template>
     </div>
 
 
-    
+
     <div id='message-container'>
         <template>
             <div class="message">
@@ -72,11 +81,11 @@
     <div class='OptionContainer'>
         <template>
             <div class="list">
-             <ul class="ul">
-                <li ><a id='2X2' href="#">2X2 </a></li>
-                <li ><a id='2X4' href="#">2X4</a></li>
-                <li ><a id='4X4' href="#">4X4</a></li>
-             </ul>
+                <ul class="ul">
+                    <li><a id='2X2' href="#">2X2 </a></li>
+                    <li><a id='2X4' href="#">2X4</a></li>
+                    <li><a id='4X4' href="#">4X4</a></li>
+                </ul>
             </div>
         </template>
     </div>
@@ -102,11 +111,11 @@
                     <button id='button' class="button" type="submit">Send</button>
                     <span id='displayName'></span>
                 </form>
+                <!-- </div> -->
+                </input>
             </div>
-        </input>
-    </div>
 
-    <script nomodule src="build.js"></script>
+            <script nomodule src="build.js"></script>
 </body>
 
 </html>

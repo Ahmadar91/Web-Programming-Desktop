@@ -159,16 +159,16 @@ body{
   padding: 25px;
   color:#333;
 }
-/* #songTitle{
-  width:300px;
+#songTitle{
+  /* width:300px; */
   text-align: center;
   font-family: monospace;
   font-size: 18px;
-  position: absolute;
-  top:60%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-} */
+  /* position: absolute; */
+  /* top:60%;
+  left: 50%; */
+  /* transform: translate(-50%,-50%); */
+}
 #buttons{
   height: 50px;
   width: 100%;
