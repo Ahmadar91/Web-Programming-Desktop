@@ -1,6 +1,6 @@
 
 import DesktopWindow from './desktopWindow.js'
-export default class player {
+export default class Player {
   constructor () {
     const DtWindow = new DesktopWindow()
     console.log(DtWindow)

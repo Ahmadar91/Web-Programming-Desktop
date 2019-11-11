@@ -1,6 +1,6 @@
 import Memory from './Memory.js'
 import Chat from './Chat.js'
-import player from './player.js'
+import Player from './player.js'
 
 // Memory(4, 4, 'memoryContainer')
 
@@ -13,18 +13,26 @@ export function handleClick () {
   bar.addEventListener('click', (event) => {
     event.preventDefault()
     switch (event.target.id) {
-      case 'chat':
-        new Chat()
+      case 'chat': {
+        const chat = new Chat()
+        chat()
         console.log('Chat')
         break
-      case 'MG' :
-        new Memory()
+      }
+
+      case 'MG' : {
+        const memory = new Memory()
+        memory()
         console.log('MG')
         break
-      case 'music' :
-        new player()
+      }
+
+      case 'music' : {
+        const musicPlayer = new Player()
+        musicPlayer()
         console.log('music')
         break
+      }
     }
   })
 }
