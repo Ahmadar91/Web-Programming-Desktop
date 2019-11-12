@@ -14,7 +14,7 @@ width: 100px;
 }
 
 .window > .header {
-	overflow: hidden; background: rgb(220,220,220); cursor: move;
+	overflow: hidden; background: rgb(90, 89, 89); cursor: move;
 }
 
 .window > .header > .close { float: right; }
@@ -58,7 +58,7 @@ width: 100px;
    
     .dateTime{
 		float: right;
-		color: rgb(38, 121, 73);
+		color: teal;
 	}
      
 
@@ -70,10 +70,12 @@ width: 100px;
     padding: 10px;
   }
 
-  .button{
+  #button{
     float: right;
   }
-    
+  #buttonUserName{
+    float: right;
+  }
 .yourMessage{
   background: grey;
 }
@@ -81,7 +83,7 @@ width: 100px;
   background: gray;
 }
 .whiteBackGround{
-  background: white;
+  background: rgb(177, 176, 176);
 }
 .body{
   background: url("..//image/YWHEBU7YPF2E1509559682782.jpg") no-repeat center center fixed;
@@ -95,7 +97,7 @@ width: 100px;
   float: left;
   list-style: none;
   text-align: center;
-  background-color: #000000;
+  background-color: teal;
   margin: 2px;
   width: 150px;
   line-height: 60px;
@@ -111,10 +113,14 @@ width: 100px;
 .ul li a:hover {
   text-decoration: none;
   color: #000000;
-  background-color: #33B5E5;
+  background-color: rgb(82, 240, 205);
 }
 .win{
-  color: green;
+  color: teal;
+  font-size: 25px;
+  padding: auto;
+  margin-left: 20px; 
+  margin-right: 20px; 
   
 }
 
@@ -140,13 +146,16 @@ body{
 }
 #main{
   /* width: 25%; */
-  background-color:#fff;
+  background-color:rgb(177, 176, 176);
   /* border-radius: 15px; */
   /* position: absolute; */
   /* top:50%;
   left: 50%; */
   /* transform: translate(-50%,-50%); */
   /* z-index: 999; */
+}
+label{
+  color: black;
 }
 #image img{
   height: 180px;

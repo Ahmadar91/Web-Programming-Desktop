@@ -16,7 +16,7 @@ export function handleClick () {
       case 'chat': {
         const chat = new Chat()
         chat()
-        console.log('Chat')
+        console.log(chat)
         break
       }
 

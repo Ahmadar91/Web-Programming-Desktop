@@ -121,9 +121,11 @@ export default class Chat {
       a.remove()
       const textBox = document.createElement('input')
       textBox.placeholder = 'Enter UserName'
+      textBox.required = true
       dt.appendChild(textBox)
       const userNameSubmit = document.createElement('button')
-      userNameSubmit.classList.add('button')
+      userNameSubmit.setAttribute('id', 'buttonUserName')
+      userNameSubmit.className = 'waves-effect waves-light btn'
       userNameSubmit.textContent = 'Submit'
       dt.appendChild(userNameSubmit)
       userNameSubmit.addEventListener('click', () => {
@@ -139,6 +141,7 @@ export default class Chat {
 
   addUserName (dt) {
     const textBox = document.createElement('input')
+    textBox.required = true
     textBox.placeholder = 'Enter UserName'
     dt.appendChild(textBox)
     const submit = document.createElement('button')
@@ -149,7 +152,6 @@ export default class Chat {
       this.createChat(dt)
       this.userNameValue = textBox.value
       console.log(this.userNameValue)
-
       localStorage.setItem('username', this.userNameValue)
       this.displayUserName.style.display = 'block'
       this.displayUserName.textContent = this.userNameValue
