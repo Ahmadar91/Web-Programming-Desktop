@@ -130,6 +130,17 @@ export default class Chat {
       userNameSubmit.className = 'waves-effect waves-light btn'
       userNameSubmit.textContent = 'Submit'
       dt.appendChild(userNameSubmit)
+      textBox.addEventListener('keypress', e => {
+        if (e.keyCode === 13) {
+          this.userNameValue = textBox.value
+          localStorage.setItem('username', this.userNameValue)
+          this.displayUserName.textContent = ' ' + this.userNameValue
+          textBox.remove()
+          userNameSubmit.remove()
+          this.changeUserName(dt)
+        }
+      })
+
       userNameSubmit.addEventListener('click', () => {
         this.userNameValue = textBox.value
         localStorage.setItem('username', this.userNameValue)
@@ -151,6 +162,19 @@ export default class Chat {
     submit.setAttribute('id', 'addUserButton')
     submit.textContent = 'submit'
     dt.appendChild(submit)
+    textBox.addEventListener('keypress', e => {
+      if (e.keyCode === 13) {
+        this.createChat(dt)
+        this.userNameValue = textBox.value
+        console.log(this.userNameValue)
+        localStorage.setItem('username', this.userNameValue)
+        this.displayUserName.style.display = 'block'
+        this.displayUserName.textContent = this.userNameValue
+        textBox.remove()
+        submit.remove()
+        this.changeUserName(dt)
+      }
+    })
     submit.addEventListener('click', () => {
       this.createChat(dt)
       this.userNameValue = textBox.value
