@@ -157,6 +157,9 @@ body{
 label{
   color: black;
 }
+#addUserButton{
+  float: right;
+}
 #image img{
   height: 180px;
   width: 350px;

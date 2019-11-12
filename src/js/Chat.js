@@ -14,7 +14,7 @@ export default class Chat {
     } else {
       this.addUserName(DtWindow.window)
     }
-    this.socket = null
+    // this.socket = null
     this.addEvents(DtWindow.window)
   }
 
@@ -145,7 +145,8 @@ export default class Chat {
     textBox.placeholder = 'Enter UserName'
     dt.appendChild(textBox)
     const submit = document.createElement('button')
-    submit.classList.add('button')
+    submit.className = 'waves-effect waves-light btn'
+    submit.setAttribute('id', 'addUserButton')
     submit.textContent = 'submit'
     dt.appendChild(submit)
     submit.addEventListener('click', () => {
@@ -209,7 +210,9 @@ export default class Chat {
     DtWindow.addEventListener('mousemove', this.moveDrop, true)
     this.closeWindowButton.addEventListener('click', () => {
       DtWindow.remove()
-      if (this.socket !== null) {
+      if (this.socket !== undefined) {
+        console.log('socket' + this.socket)
+
         this.socket.close()
       }
     })
