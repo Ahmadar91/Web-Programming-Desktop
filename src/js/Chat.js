@@ -14,7 +14,7 @@ export default class Chat {
     } else {
       this.addUserName(DtWindow.window)
     }
-    // this.socket = null
+    this.socket = null
     this.addEvents(DtWindow.window)
   }
 

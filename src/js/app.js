@@ -15,22 +15,19 @@ export function handleClick () {
     switch (event.target.id) {
       case 'chat': {
         const chat = new Chat()
-        chat()
         console.log(chat)
         break
       }
 
       case 'MG' : {
         const memory = new Memory()
-        memory()
-        console.log('MG')
+        console.log(memory)
         break
       }
 
       case 'music' : {
         const musicPlayer = new Player()
-        musicPlayer()
-        console.log('music')
+        console.log(musicPlayer)
         break
       }
     }
