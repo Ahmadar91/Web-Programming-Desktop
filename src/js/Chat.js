@@ -51,11 +51,13 @@ export default class Chat {
 
       this.sendText()
       this.textBox.value = ''
+      this.textBox.placeholder = 'Your message'
     })
     this.textBox.addEventListener('keypress', (event) => {
       if (event.keyCode === 13) {
         this.sendText()
         this.textBox.value = ''
+        this.textBox.placeholder = 'Your message'
       }
     })
     this.socket.onmessage = (event) => {

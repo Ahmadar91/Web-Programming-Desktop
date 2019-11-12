@@ -46,12 +46,13 @@ width: 100px;
 }
   
   .message{
-    border-bottom: solid 1px #ccc;
+    border-bottom: solid 1px rgb(5, 5, 5);
     padding: 20px;
     direction: ltr;
     overflow-wrap: break-word;
     word-break: break-all;
     hyphens: auto;
+    border-radius: 15px;
     
   }
 
@@ -83,7 +84,7 @@ width: 100px;
   background: gray;
 }
 .whiteBackGround{
-  background: rgb(177, 176, 176);
+  background: rgb(160, 160, 160);
 }
 .body{
   background: url("..//image/YWHEBU7YPF2E1509559682782.jpg") no-repeat center center fixed;
