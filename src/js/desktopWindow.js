@@ -18,7 +18,7 @@ export default class DesktopWindow {
 
   /**
    *
-   *
+   * gets the close button for the window header
    * @returns
    * @memberof DesktopWindow
    */
@@ -27,8 +27,7 @@ export default class DesktopWindow {
   }
 
   /**
-   *
-   *
+   * gets the window
    * @returns
    * @memberof DesktopWindow
    */

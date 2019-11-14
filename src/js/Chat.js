@@ -26,7 +26,7 @@ export default class Chat {
 
   /**
    *
-   *
+   * creates the chat from the template and appends it to the window
    * @param {*} dt
    * @memberof Chat
    */
@@ -100,7 +100,7 @@ export default class Chat {
 
   /**
    *
-   *
+   * checks the local storage if the username is available
    * @returns
    * @memberof Chat
    */
@@ -110,7 +110,7 @@ export default class Chat {
   }
 
   /**
-   *
+   * changes the userName and update the local storage
    *
    * @param {*} dt
    * @memberof Chat
@@ -160,7 +160,7 @@ export default class Chat {
 
   /**
    *
-   *
+   * add a userName and update the local storage
    * @param {*} dt
    * @memberof Chat
    */
@@ -200,7 +200,7 @@ export default class Chat {
 
   /**
    *
-   *
+   * send the data from the input text with the username to server
    * @memberof Chat
    */
   sendText () {

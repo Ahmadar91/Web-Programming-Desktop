@@ -1,7 +1,7 @@
 
 import DesktopWindow from './desktopWindow.js'
 /**
- *
+ * Player class
  *
  * @export
  * @class Player
@@ -21,7 +21,7 @@ export default class Player {
 
   /**
    *
-   *
+   *create a player and append the player to window
    * @param {*} dt
    * @param {*} song
    * @memberof Player
@@ -40,6 +40,9 @@ export default class Player {
     const muteButton = PlayerDiv.querySelector('#mute')
     let currentSong = 0
 
+    /**
+     * play song from local files using and array to store them and to navigate them
+     */
     function playSong () {
       song.src = songs[currentSong]
       const text = songs[currentSong]
@@ -50,6 +53,9 @@ export default class Player {
       }
     }
 
+    /**
+     * if the audio object is paused play and vice versa and change the img attribute
+     */
     function playOrPauseSong () {
       if (song.paused) {
         song.play()
@@ -59,7 +65,10 @@ export default class Player {
         PlayerDiv.querySelector('#play img').setAttribute('src', '../image/Play.png')
       }
     }
-
+    /**
+     * return a string of the song time in the format xx:xx
+     * @param {*} time
+     */
     function TimeFormat (time) {
       const hrs = ~~(time / 3600)
       const mins = ~~((time % 3600) / 60)
@@ -107,6 +116,9 @@ export default class Player {
       song.currentTime = (clickPosition / seekBar.offsetWidth) * song.duration
     }, false)
 
+    /**
+     * go to the next song and play it
+     */
     function next () {
       currentSong++
       if (currentSong > 2) {
@@ -116,7 +128,9 @@ export default class Player {
       PlayerDiv.querySelector('#play img').setAttribute('src', '../image/Pause.png')
       PlayerDiv.querySelector('#image img').setAttribute('src', poster[currentSong])
     }
-
+    /**
+     * go to the previous song and play it
+     */
     function pre () {
       currentSong--
       if (currentSong < 0) {

@@ -20,7 +20,7 @@ export default class Memory {
 
   /**
    *
-   *
+   * change the memory game array size depending on the options
    * @param {*} dt
    * @param {*} old
    * @param {*} win
@@ -46,7 +46,7 @@ export default class Memory {
 
   /**
    *
-   *
+   * creates a memory game depending on the option presented
    * @param {*} dt
    * @param {*} h1
    * @memberof Memory
@@ -79,7 +79,7 @@ export default class Memory {
 
   /**
    *
-   *
+   * creates the array depending on the input and appends it to the window
    * @param {*} rows
    * @param {*} cols
    * @param {*} container
@@ -158,7 +158,7 @@ export default class Memory {
 
   /**
    *
-   *
+   * get the pictures and shuffle it
    * @param {*} rows
    * @param {*} cols
    * @returns

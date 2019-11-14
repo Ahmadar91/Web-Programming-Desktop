@@ -3,7 +3,9 @@ import Chat from './Chat.js'
 import Player from './player.js'
 
 const bar = document.querySelector('#nav-mobile')
-
+/**
+ * Nav bar event handler
+ */
 function handleClick () {
   bar.addEventListener('click', (event) => {
     event.preventDefault()
