@@ -1,45 +1,49 @@
 
 import DesktopWindow from './desktopWindow.js'
+/**
+ *
+ *
+ * @export
+ * @class Player
+ */
 export default class Player {
+  /**
+   *Creates an instance of Player.
+   * @memberof Player
+   */
   constructor () {
     const DtWindow = new DesktopWindow()
-    console.log(DtWindow)
     this.closeWindowButton = DtWindow.window.childNodes[1].childNodes[1]
-    // this.closeWindowButton = DtWindow.getClose()
-    console.log(this.closeWindowButton)
     const song = new Audio()
     this.createPlayer(DtWindow.window, song)
     this.addEvents(DtWindow.window, song)
   }
 
+  /**
+   *
+   *
+   * @param {*} dt
+   * @param {*} song
+   * @memberof Player
+   */
   createPlayer (dt, song) {
     const templateDiv = document.querySelectorAll('.PlayerContainer template')[0].content.firstElementChild
-    console.log(templateDiv)
     let counter = 0
     const PlayerDiv = document.importNode(templateDiv, true)
-    console.log(PlayerDiv)
-
     dt.appendChild(PlayerDiv)
-
     const songs = ['../audio/Above&Beyond.mp3', '../audio/Time.mp3', '../audio/PinkFloyd.mp3']
     const poster = ['../image/Poster1.jpg', '../image/Poster2.jpg', '../image/Poster3.jpg']
-
     const songTitle = PlayerDiv.querySelector('#songTitle')
     const fillBar = PlayerDiv.querySelector('#fill')
     const timeBar = PlayerDiv.querySelector('#time')
     const volumeBar = PlayerDiv.querySelector('#volume')
     const muteButton = PlayerDiv.querySelector('#mute')
-
-    // var song = new Audio()
-    let currentSong = 0 // it point to the current song
-
-    // window.onload = playSong // it will call the function playSong when window is load
+    let currentSong = 0
 
     function playSong () {
-      song.src = songs[currentSong] // set the source of 0th song
+      song.src = songs[currentSong]
       const text = songs[currentSong]
-      songTitle.textContent = text.slice(9, text.length - 4) // set the title of song
-      // song.play() // play the song
+      songTitle.textContent = text.slice(9, text.length - 4)
       const playPromise = song.play()
       if (playPromise !== null) {
         playPromise.catch(() => { song.play() })
@@ -55,13 +59,12 @@ export default class Player {
         PlayerDiv.querySelector('#play img').setAttribute('src', '../image/Play.png')
       }
     }
+
     function TimeFormat (time) {
-      // Hours, minutes and seconds
       const hrs = ~~(time / 3600)
       const mins = ~~((time % 3600) / 60)
       const secs = ~~time % 60
 
-      // Output like "1:01" or "4:03:59" or "123:03:59"
       let ret = ''
 
       if (hrs > 0) {
@@ -74,9 +77,7 @@ export default class Player {
     }
 
     song.addEventListener('timeupdate', function () {
-      // timeBar.textContent = 'song Duration: ' + TimeFormat(song.duration) + ' minutes' + ' currentTime: ' + TimeFormat(song.currentTime)
       timeBar.textContent = ' ' + TimeFormat(song.currentTime) + '/' + TimeFormat(song.duration)
-      // console.log(song.currentTime)
 
       const position = song.currentTime / song.duration
       fillBar.style.width = position * 100 + '%'
@@ -84,11 +85,10 @@ export default class Player {
 
     volumeBar.addEventListener('change', function (e) {
       const volume = e.target.value / 100
-      // console.log(volume)
 
       song.volume = parseFloat(volume)
-      // console.log(parseFloat(volume))
     })
+
     muteButton.addEventListener('click', function () {
       if (song.muted) {
         song.muted = false
@@ -98,15 +98,13 @@ export default class Player {
         muteButton.textContent = 'volume_off'
       }
     })
+
     const seekBar = PlayerDiv.querySelector('#seek-bar')
 
     seekBar.addEventListener('mousedown', function (e) {
       const clickPosition = e.clientX - e.target.offsetParent.offsetLeft - seekBar.offsetLeft
-      console.log(clickPosition)
-      console.log((e.target.offsetWidth))
-      song.currentTime = (clickPosition / seekBar.offsetWidth) * song.duration
 
-      console.log(song.currentTime)
+      song.currentTime = (clickPosition / seekBar.offsetWidth) * song.duration
     }, false)
 
     function next () {
@@ -148,6 +146,12 @@ export default class Player {
     })
   }
 
+  /**
+   *
+   *
+   * @param {*} e
+   * @memberof Player
+   */
   moveStart (e) {
     document.querySelectorAll('.window').forEach((window) => {
       window.style.zIndex = -1
@@ -158,10 +162,21 @@ export default class Player {
       this.offsetTop - e.clientY]
   }
 
+  /**
+   *
+   *
+   * @memberof Player
+   */
   moveDragOver () {
     this.isClicked = false
   }
 
+  /**
+   *
+   *
+   * @param {*} e
+   * @memberof Player
+   */
   moveDrop (e) {
     if (this.isClicked) {
       this.position = {
@@ -173,6 +188,13 @@ export default class Player {
     }
   }
 
+  /**
+   *
+   *
+   * @param {*} DtWindow
+   * @param {*} song
+   * @memberof Player
+   */
   addEvents (DtWindow, song) {
     DtWindow.addEventListener('mousedown', this.moveStart, true)
     DtWindow.addEventListener('mouseup', this.moveDragOver, true)

@@ -1,12 +1,19 @@
 
 import DesktopWindow from './desktopWindow.js'
+/**
+ *
+ *
+ * @export
+ * @class Chat
+ */
 export default class Chat {
+  /**
+   *Creates an instance of Chat.
+   * @memberof Chat
+   */
   constructor () {
     const DtWindow = new DesktopWindow()
-    console.log(DtWindow)
     this.closeWindowButton = DtWindow.window.childNodes[1].childNodes[1]
-    // this.closeWindowButton = DtWindow.getClose()
-    console.log(this.closeWindowButton)
     DtWindow.window.classList.add('whiteBackGround')
     if (this.hasUserName()) {
       this.createChat(DtWindow.window)
@@ -14,45 +21,38 @@ export default class Chat {
     } else {
       this.addUserName(DtWindow.window)
     }
-    // this.socket = null
     this.addEvents(DtWindow.window)
   }
 
+  /**
+   *
+   *
+   * @param {*} dt
+   * @memberof Chat
+   */
   createChat (dt) {
-    const messageTemplate = document.querySelector('#message-container template')
-    console.log(messageTemplate)
-    const messageDiv = document.importNode(messageTemplate.content, true)
-    console.log(messageDiv)
     const templateDiv = document.querySelectorAll('#ChatContainer template')[0].content.firstElementChild
-
     const chatDiv = document.importNode(templateDiv, true)
-    console.log(chatDiv.childNodes[3].firstElementChild)
     this.textBox = chatDiv.childNodes[3].firstElementChild
-    // chatDiv.classList.add('whiteBackGround')
     dt.appendChild(chatDiv)
-    // this.displayName = chatDiv.childNodes[3].lastElementChild
-
     this.chatContainer = chatDiv.childNodes[1]
-    console.log(this.chatContainer)
-
     this.button = chatDiv.querySelector('#button')
     this.socket = new WebSocket('ws://vhost3.lnu.se:20080/socket/')
-    console.log(this.chatContainer)
     this.displayUserName = chatDiv.querySelector('#displayName')
-    console.log('span', this.displayUserName)
     this.userName = localStorage.getItem('username')
     if (this.hasUserName()) {
       this.displayUserName.textContent = ' ' + this.userName
     } else {
       this.displayUserName.style.display = 'none'
     }
+
     this.button.addEventListener('click', (e) => {
       e.preventDefault()
-
       this.sendText()
       this.textBox.value = ''
       this.textBox.placeholder = 'Your message'
     })
+
     this.textBox.addEventListener('keypress', (event) => {
       if (event.keyCode === 13) {
         this.sendText()
@@ -60,8 +60,8 @@ export default class Chat {
         this.textBox.placeholder = 'Your message'
       }
     })
+
     this.socket.onmessage = (event) => {
-      console.log(event.data)
       var text = ''
       var msg = JSON.parse(event.data)
       if (msg.type === 'heartbeat') {
@@ -98,14 +98,24 @@ export default class Chat {
     }
   }
 
+  /**
+   *
+   *
+   * @returns
+   * @memberof Chat
+   */
   hasUserName () {
     this.userName = localStorage.getItem('username')
     return !(this.userName === null || this.userName === '')
   }
 
+  /**
+   *
+   *
+   * @param {*} dt
+   * @memberof Chat
+   */
   changeUserName (dt) {
-    console.log('dffffff')
-    // const changeUserNameButton = document.createElement('button')
     const a = document.createElement('a')
     a.setAttribute('href', '#')
     const icon = document.createElement('i')
@@ -113,12 +123,8 @@ export default class Chat {
     icon.textContent = 'settings'
     a.appendChild(icon)
     a.classList.add('UserNameButton')
-    // changeUserNameButton.appendChild(icon)
-    // changeUserNameButton.textContent = 'Change Username'
-    // changeUserNameButton.className = 'UserNameButton'
     dt.firstElementChild.appendChild(a)
     icon.addEventListener('click', () => {
-      //  icon.preventDefault()
       icon.remove()
       a.remove()
       const textBox = document.createElement('input')
@@ -152,6 +158,12 @@ export default class Chat {
     })
   }
 
+  /**
+   *
+   *
+   * @param {*} dt
+   * @memberof Chat
+   */
   addUserName (dt) {
     const textBox = document.createElement('input')
     textBox.required = true
@@ -166,7 +178,6 @@ export default class Chat {
       if (e.keyCode === 13) {
         this.createChat(dt)
         this.userNameValue = textBox.value
-        console.log(this.userNameValue)
         localStorage.setItem('username', this.userNameValue)
         this.displayUserName.style.display = 'block'
         this.displayUserName.textContent = this.userNameValue
@@ -178,7 +189,6 @@ export default class Chat {
     submit.addEventListener('click', () => {
       this.createChat(dt)
       this.userNameValue = textBox.value
-      console.log(this.userNameValue)
       localStorage.setItem('username', this.userNameValue)
       this.displayUserName.style.display = 'block'
       this.displayUserName.textContent = this.userNameValue
@@ -188,12 +198,16 @@ export default class Chat {
     })
   }
 
+  /**
+   *
+   *
+   * @memberof Chat
+   */
   sendText () {
     if (this.textBox.value === '') {
       return
     }
     this.userName = localStorage.getItem('username')
-    console.log(this.textBox.value)
     const msg = {
       type: 'message',
       data: this.textBox.value,
@@ -201,10 +215,15 @@ export default class Chat {
       channel: '',
       key: 'eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd'
     }
-
     this.socket.send(JSON.stringify(msg))
   }
 
+  /**
+   *
+   *
+   * @param {*} e
+   * @memberof Chat
+   */
   moveStart (e) {
     document.querySelectorAll('.window').forEach((window) => {
       window.style.zIndex = -1
@@ -215,10 +234,21 @@ export default class Chat {
       this.offsetTop - e.clientY]
   }
 
+  /**
+   *
+   *
+   * @memberof Chat
+   */
   moveDragOver () {
     this.isClicked = false
   }
 
+  /**
+   *
+   *
+   * @param {*} e
+   * @memberof Chat
+   */
   moveDrop (e) {
     if (this.isClicked) {
       this.position = {
@@ -230,6 +260,12 @@ export default class Chat {
     }
   }
 
+  /**
+   *
+   *
+   * @param {*} DtWindow
+   * @memberof Chat
+   */
   addEvents (DtWindow) {
     DtWindow.addEventListener('mousedown', this.moveStart, true)
     DtWindow.addEventListener('mouseup', this.moveDragOver, true)
@@ -237,8 +273,6 @@ export default class Chat {
     this.closeWindowButton.addEventListener('click', () => {
       DtWindow.remove()
       if (this.socket !== undefined) {
-        console.log('socket' + this.socket)
-
         this.socket.close()
       }
     })

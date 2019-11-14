@@ -146,14 +146,9 @@ body{
   z-index: 99;
 }
 #main{
-  /* width: 25%; */
+ 
   background-color:rgb(177, 176, 176);
-  /* border-radius: 15px; */
-  /* position: absolute; */
-  /* top:50%;
-  left: 50%; */
-  /* transform: translate(-50%,-50%); */
-  /* z-index: 999; */
+
 }
 label{
   color: black;
@@ -164,23 +159,18 @@ label{
 #image img{
   height: 180px;
   width: 350px;
-  /* margin-top: -5px; */
-  /* border-top-left-radius: 15px;
-  border-top-right-radius: 15px; */
+
 }
 #player{
   padding: 25px;
   color:#333;
 }
 #songTitle{
-  /* width:300px; */
+
   text-align: center;
   font-family: monospace;
   font-size: 18px;
-  /* position: absolute; */
-  /* top:60%;
-  left: 50%; */
-  /* transform: translate(-50%,-50%); */
+
 }
 #buttons{
   height: 50px;
@@ -249,8 +239,6 @@ label{
 #volume{
   width: 50%;
   height: 5px;
-  /* background-color:royalblue;
-  border-radius: 20px; */
 }
 
 #mute{
