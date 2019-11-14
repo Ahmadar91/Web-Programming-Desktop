@@ -31,7 +31,7 @@ export default class Player {
     let counter = 0
     const PlayerDiv = document.importNode(templateDiv, true)
     dt.appendChild(PlayerDiv)
-    const songs = ['../audio/Above&Beyond.mp3', '../audio/Time.mp3', '../audio/PinkFloyd.mp3']
+    const songs = ['../audio/song1.mp3', '../audio/song2.mp3', '../audio/song3.mp3']
     const poster = ['../image/Poster1.jpg', '../image/Poster2.jpg', '../image/Poster3.jpg']
     const songTitle = PlayerDiv.querySelector('#songTitle')
     const fillBar = PlayerDiv.querySelector('#fill')
