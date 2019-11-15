@@ -2,7 +2,6 @@
 import DesktopWindow from './desktopWindow.js'
 /**
  * Player class
- *
  * @export
  * @class Player
  */
